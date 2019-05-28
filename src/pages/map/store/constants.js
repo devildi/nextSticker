@@ -1,2 +1,1 @@
-export const OPEN_TOAST = 'OPEN_TOAST';
-export const CLOSE_TOAST = 'CLOSE_TOAST';
+export const TEST = 'TEST';

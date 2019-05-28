@@ -1,17 +1,13 @@
 import * as constants from './constants'
 
 const defaultState = {
-	isOpened: false,
-	text: '',
-	status: ''
+	text: 0
 }
 
 export default (state = defaultState, action) => {
 	switch(action.type) {
-		case constants.OPEN_TOAST:
-			return {...state, ...action.data};
-		case constants.CLOSE_TOAST:
-			return {...state, isOpened: false};
+		case constants.TEST:
+			return {...state, text: state.text+action.data};
 		default:
 			return state;
 	}

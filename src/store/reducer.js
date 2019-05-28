@@ -1,10 +1,6 @@
-//import { combineReducers } from 'redux'
-//import { reducer as indexReducer } from '../pages/index/store'
+import { combineReducers } from 'redux'
+import { reducer as indexReducer } from '../pages/map/store'
 
-//export default combineReducers({
-//	indexReducer
-//})
-
-export default (defaultState) => {
-	return {ee: 0}
-}
+export default combineReducers({
+	indexReducer
+})

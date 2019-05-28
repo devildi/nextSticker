@@ -1,10 +1,6 @@
 import * as constants from './constants';
 
-export const openToast = (data) => ({
-	type: constants.OPEN_TOAST,
+export const test = (data) => ({
+	type: constants.TEST,
 	data: data
-});
-
-export const closeToast = () => ({
-	type: constants.CLOSE_TOAST
 });
