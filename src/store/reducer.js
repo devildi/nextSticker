@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux'
-import { reducer as indexReducer } from '../pages/map/store'
+import { reducer as appbarReducer } from '../components/appbar/store'
+import { reducer as sidebarReducer } from '../components/sidebar/store'
 
 export default combineReducers({
-	indexReducer
+	appbarReducer,
+	sidebarReducer
 })

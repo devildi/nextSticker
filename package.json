@@ -8,6 +8,7 @@
     "install": "^0.12.2",
     "npm": "^6.9.0",
     "react": "^16.8.6",
+    "react-amap": "^1.2.8",
     "react-dom": "^16.8.6",
     "react-redux": "^7.0.3",
     "react-router-dom": "^5.0.0",
