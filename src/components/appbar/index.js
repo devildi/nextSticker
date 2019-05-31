@@ -59,8 +59,8 @@ function ButtonAppBar({toggleDrawer}) {
           </IconButton>
           <div >
             <Input
+              style={{color: '#ffffff'}}
               placeholder="Tap Your TipNo. Here"
-              id="input-with-icon-adornment"
               startAdornment={
                 <InputAdornment position="start">
                   <AccountCircle />
