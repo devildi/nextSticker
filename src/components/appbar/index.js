@@ -6,9 +6,11 @@ import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import IconButton from '@material-ui/core/IconButton'
 import MenuIcon from '@material-ui/icons/Menu'
-import Input from '@material-ui/core/Input'
+import Home from '@material-ui/icons/Home'
+import Input from '@material-ui/core/InputBase'
 import AccountCircle from '@material-ui/icons/AccountCircle'
 import InputAdornment from '@material-ui/core/InputAdornment'
+import DirectionsIcon from '@material-ui/icons/Directions'
 
 import { actionCreators as sidebarActionCreators } from '../sidebar/store'
 
@@ -25,6 +27,7 @@ const useStyles = makeStyles(theme => ({
   input: {
     color: 'inherit',
   },
+
 }));
 
 function ButtonAppBar({toggleDrawer}) {
@@ -34,40 +37,45 @@ function ButtonAppBar({toggleDrawer}) {
       <AppBar position="static">
         <Toolbar>
           <div edge="start" className={classes.menuButton} color="inherit" aria-label="Menu">
-            <MenuIcon />
+            <Home />
           </div>
           <Typography variant="h6" className={classes.title}>
             NextSticker
           </Typography>
-          <IconButton 
-            color="inherit"
-            onClick={toggleDrawer}
-          >
-            <AccountCircle />
-          </IconButton>
-          <IconButton 
-            color="inherit"
-            onClick={toggleDrawer}
-          >
-            <AccountCircle />
-          </IconButton>
-          <IconButton 
-            color="inherit"
-            onClick={toggleDrawer}
-          >
-            <MenuIcon />
-          </IconButton>
-          <div >
-            <Input
-              style={{color: '#ffffff'}}
-              placeholder="Tap Your TipNo. Here"
-              startAdornment={
-                <InputAdornment position="start">
-                  <AccountCircle />
-                </InputAdornment>
-              }
-            />
-          </div>
+          {
+            true
+            ?<div>
+              <IconButton 
+                color="inherit"
+                onClick={toggleDrawer}
+              >
+                <AccountCircle />
+              </IconButton>
+              <IconButton 
+                color="inherit"
+                onClick={toggleDrawer}
+              >
+                <AccountCircle />
+              </IconButton>
+              <IconButton 
+                color="inherit"
+                onClick={toggleDrawer}
+              >
+                <MenuIcon />
+              </IconButton>
+            </div>
+            :<div >
+              <Input
+                style={{color: '#ffffff'}}
+                placeholder="Tap Your TipNo. Here"
+                startAdornment={
+                  <InputAdornment position="start">
+                    <DirectionsIcon />
+                  </InputAdornment>
+                }
+              />
+            </div>
+          }
         </Toolbar>
       </AppBar>
     </div>

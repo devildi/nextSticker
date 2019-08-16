@@ -24,7 +24,7 @@ function AppMiniBar () {
     <AppBar position="static">
       <Toolbar>
         <Typography variant="h6" color="inherit">
-          My Route
+          路线详情
         </Typography>
       </Toolbar>
     </AppBar>

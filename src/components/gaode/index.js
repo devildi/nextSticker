@@ -25,25 +25,25 @@ class UIMarker extends React.Component {
   }
 
   geticonLabel(cat, label){
-  	if(cat === '0'){
-  		return {
-  			label,
-  			iconTheme: 'default',
-  			iconStyle: 'red'
-  		}
-  	} else if(cat === '1') {
-  		return {
-  			iconLabel: 'F',
-  			iconTheme: 'numv1',
-  			iconStyle: 'blue'
-  		}
-  	} else {
-  		return {
-  			iconLabel: 'H',
-  			iconTheme: 'numv2',
-  			iconStyle: 'black'
-  		}
-  	}
+    if(cat === '0'){
+      return {
+        label,
+        iconTheme: 'default',
+        iconStyle: 'red'
+      }
+    } else if(cat === '1') {
+      return {
+        iconLabel: 'F',
+        iconTheme: 'numv1',
+        iconStyle: 'blue'
+      }
+    } else {
+      return {
+        iconLabel: 'H',
+        iconTheme: 'numv2',
+        iconStyle: 'black'
+      }
+    }
   }
 
   initPage(SimpleMarker) {
@@ -56,11 +56,11 @@ class UIMarker extends React.Component {
     })
   
     uimarker.on('click', () => {
-    	if(this.props.cat === '0') {
-    		this.props.testMobx.openinfoWindow(this.props.index)
-    	} else if(this.props.cat === '1'){
-    		this.props.testMobx.openDinnerinfoWindow(this.props.index)
-    	}
+      if(this.props.cat === '0') {
+        this.props.testMobx.openinfoWindow(this.props.index)
+      } else if(this.props.cat === '1'){
+        this.props.testMobx.openDinnerinfoWindow(this.props.index)
+      }
       
     })
   }
@@ -86,7 +86,8 @@ class Geolocation extends React.Component {
           this.geolocation.getCurrentPosition()
           window.AMap.event.addListener(this.geolocation, 'complete', (data) => {
           	let myPosition = [data.position.getLng(),data.position.getLat()]
-  					//this.props.testMobx.setMyself(myPosition)
+  					console.log(myPosition)
+            //this.props.testMobx.setMyself(myPosition)
           })
     			window.AMap.event.addListener(this.geolocation, 'error', (data) => {
     				console.log(data)
@@ -156,7 +157,6 @@ function MapApp (props) {
       	amapkey={'fbe59813637de60223e3d22805a2486c'}
       	zoom={15}
       	resizeEnable={true}
-    		mapStyle={'fresh'}
     		useAMapUI
       >
       	<Geolocation {...pluginProps} />

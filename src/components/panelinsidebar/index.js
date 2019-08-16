@@ -6,6 +6,22 @@ import MuiExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 
+import { makeStyles } from '@material-ui/core/styles'
+
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    width: '100%',
+    maiginTop: 0,
+    maiginLeft: 0,
+    backgroundColor: theme.palette.background.paper,
+  }
+}));
+
 const ExpansionPanel = withStyles({
   root: {
     border: '1px solid rgba(0, 0, 0, .125)',
@@ -54,21 +70,26 @@ function CustomizedExpansionPanels() {
     setExpanded(newExpanded ? panel : false);
   };
 
+  const classes = useStyles();
+
   return (
-    <div>
-      <ExpansionPanel square expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
+    <div >
+      <ExpansionPanel square expanded={expanded === '0'} onChange={handleChange('0')}>
         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1d-content" id="panel1d-header">
           <Typography>Day 1</Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
-          <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-            sit amet blandit leo lobortis eget. Lorem ipsum dolor sit amet, consectetur adipiscing
-            elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.
-          </Typography>
+          <List className={classes.root} component="nav" aria-label="Secondary mailbox folders">
+            <ListItem button>
+              <ListItemText primary="大帅府" />
+            </ListItem>
+            <ListItem button>
+              <ListItemText primary="故宫" />
+            </ListItem>
+          </List>
         </ExpansionPanelDetails>
       </ExpansionPanel>
-      <ExpansionPanel square expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
+      <ExpansionPanel square expanded={expanded === '1'} onChange={handleChange('1')}>
         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel2d-content" id="panel2d-header">
           <Typography>Day 2</Typography>
         </ExpansionPanelSummary>
@@ -80,7 +101,7 @@ function CustomizedExpansionPanels() {
           </Typography>
         </ExpansionPanelDetails>
       </ExpansionPanel>
-      <ExpansionPanel square expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
+      <ExpansionPanel square expanded={expanded === '2'} onChange={handleChange('2')}>
         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel3d-content" id="panel3d-header">
           <Typography>Day 3</Typography>
         </ExpansionPanelSummary>

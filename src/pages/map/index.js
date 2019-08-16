@@ -5,8 +5,8 @@ import { makeStyles } from '@material-ui/core/styles'
 
 import Appbar from '../../components/appbar'
 import Sidebar from '../../components/sidebar'
-//import Gaode from '../../components/gaode'
-import Google from '../../components/google'
+import Gaode from '../../components/gaode'
+//import Google from '../../components/google'
 
 const useStyles = makeStyles(theme => ({
   mapContainer: {
@@ -25,7 +25,7 @@ function Mapindex() {
       <Appbar />
       <Sidebar />
       <div className={classes.mapContainer}>
-      	<Google />
+      	<Gaode />
       </div>
     </div>
   )

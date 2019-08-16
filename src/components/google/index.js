@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-//import { actionCreators } from './store'
+import { actionCreators } from './store'
 const { compose, withProps} = require("recompose")
 const {
   withScriptjs,
@@ -14,7 +14,7 @@ const {
 
 const MyMapComponent = compose(
   withProps({
-    googleMapURL: "https://maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyAJHnZaO6czTIkkftjQNdtNcjL52pMxsIY&v=3.exp&libraries=geometry,drawing,places",
+    googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyAJHnZaO6czTIkkftjQNdtNcjL52pMxsIY&v=3.exp&libraries=geometry,drawing,places",
     loadingElement: <div style={{ height: `100%` }} />,
     containerElement: <div style={{ height: `100%` }} />,
     mapElement: <div style={{ height: `100%` }} />
@@ -29,10 +29,6 @@ const MyMapComponent = compose(
   >	
 		<Marker 
 			position={props.whereAmI}
-			icon={new google.maps.MarkerImage('//maps.gstatic.com/mapfiles/mobile/mobileimgs2.png',
-                                                      new google.maps.Size(22,22),
-                                                      new google.maps.Point(0,18),
-                                                      new google.maps.Point(11,11))} 
 		/>
     {props.directions && <DirectionsRenderer directions={props.directions} />}
   </GoogleMap>
@@ -41,31 +37,32 @@ const MyMapComponent = compose(
 class Google extends React.Component {
 
   componentDidMount() {
-
+    this.props.location()
   }
 
   render() {
     return (
       <MyMapComponent
-      	center={{ lat: -34.397, lng: 150.644 }}
-        points={{ lat: -34.397, lng: 150.644 }}
+      	center={{ lat: 41.5807212459, lng: 123.4927212587 }}
+        points={{ lat: 41.5807212459, lng: 123.4927212587 }}
       />
     )
   }
 }
 
-// const mapState = ({indexReducer}) => {
-//   return {
-//     data: indexReducer.text
-//   } 
-// }
+const mapState = ({indexReducer}) => {
+  return {
 
-// const mapDispatch = (dispatch) => {
-//   return {
-//     test(){
-//       dispatch(actionCreators.test(1))
-//     },
-//   }
-// }
+  } 
+}
 
-export default connect(null, null)(Google)
+const mapDispatch = (dispatch) => {
+  return {
+    location(){
+      console.log('99')
+      dispatch(actionCreators.location())
+    },
+  }
+}
+
+export default connect(mapState, mapDispatch)(Google)
