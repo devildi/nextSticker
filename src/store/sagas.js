@@ -1,17 +1,16 @@
-import { take, call, put, takeEvery, takeLatest, fork } from 'redux-saga/effects'
-//import Api from '...'
-import { constants } from '../pages/map/store'
+import { all, take, call, put, takeEvery, takeLatest, fork } from 'redux-saga/effects'
+import { actionCreators } from '../components/sidebar/store'
 
-function* watchText(action){
-	while(true){
-		const action= yield take(constants.TEST)
-		console.log(action)
-    yield put(action)
+function * watchUsername(){
+  while(true){
+    const action= yield take('TO_LOGIN_IN');
+    yield put(actionCreators.switchBar());
   }
 }
 
 
 export default function* mySaga (){
-	console.log('begin!')
-	yield fork(watchText)
+	yield all([
+    fork(watchUsername),
+  ]);
 }

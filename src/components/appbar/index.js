@@ -49,18 +49,6 @@ function ButtonAppBar({toggleDrawer}) {
                 color="inherit"
                 onClick={toggleDrawer}
               >
-                <AccountCircle />
-              </IconButton>
-              <IconButton 
-                color="inherit"
-                onClick={toggleDrawer}
-              >
-                <AccountCircle />
-              </IconButton>
-              <IconButton 
-                color="inherit"
-                onClick={toggleDrawer}
-              >
                 <MenuIcon />
               </IconButton>
             </div>

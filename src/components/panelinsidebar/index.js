@@ -13,6 +13,8 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 
+import data from '../../data'
+
 const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
@@ -74,45 +76,26 @@ function CustomizedExpansionPanels() {
 
   return (
     <div >
-      <ExpansionPanel square expanded={expanded === '0'} onChange={handleChange('0')}>
-        <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1d-content" id="panel1d-header">
-          <Typography>Day 1</Typography>
-        </ExpansionPanelSummary>
-        <ExpansionPanelDetails>
-          <List className={classes.root} component="nav" aria-label="Secondary mailbox folders">
-            <ListItem button>
-              <ListItemText primary="大帅府" />
-            </ListItem>
-            <ListItem button>
-              <ListItemText primary="故宫" />
-            </ListItem>
-          </List>
-        </ExpansionPanelDetails>
-      </ExpansionPanel>
-      <ExpansionPanel square expanded={expanded === '1'} onChange={handleChange('1')}>
-        <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel2d-content" id="panel2d-header">
-          <Typography>Day 2</Typography>
-        </ExpansionPanelSummary>
-        <ExpansionPanelDetails>
-          <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-            sit amet blandit leo lobortis eget. Lorem ipsum dolor sit amet, consectetur adipiscing
-            elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.
-          </Typography>
-        </ExpansionPanelDetails>
-      </ExpansionPanel>
-      <ExpansionPanel square expanded={expanded === '2'} onChange={handleChange('2')}>
-        <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel3d-content" id="panel3d-header">
-          <Typography>Day 3</Typography>
-        </ExpansionPanelSummary>
-        <ExpansionPanelDetails>
-          <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-            sit amet blandit leo lobortis eget. Lorem ipsum dolor sit amet, consectetur adipiscing
-            elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.
-          </Typography>
-        </ExpansionPanelDetails>
-      </ExpansionPanel>
+      {
+        data.map((item, index) => (
+          <ExpansionPanel key={index} square expanded={expanded === index} onChange={handleChange(index)}>
+            <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1d-content" id="panel1d-header">
+              <Typography>Day {index + 1}</Typography>
+            </ExpansionPanelSummary>
+            <ExpansionPanelDetails>
+              <List className={classes.root} component="nav" aria-label="Secondary mailbox folders">
+                {
+                  item.map((r,i) => (
+                    <ListItem button key={i}>
+                      <ListItemText primary={r.name} />
+                    </ListItem>
+                  ))
+                }
+              </List>
+            </ExpansionPanelDetails>
+          </ExpansionPanel>
+        ))
+      }
     </div>
   );
 }

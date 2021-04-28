@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Map, InfoWindow, Marker } from 'react-amap'
+import data from '../../data'
 //import { actionCreators } from './store'
 
 const pluginProps = {
@@ -150,7 +151,7 @@ class DirectionsRenderer extends React.Component {
   }
 }
 
-function MapApp (props) {
+function MapApp (props) {  
   return (
 		<div style={{width: '100%', height: '100%'}}>
       <Map 
@@ -161,6 +162,25 @@ function MapApp (props) {
       >
       	<Geolocation {...pluginProps} />
       	<DirectionsRenderer />
+        {
+          data.map((item) => {
+            item.map((row, index) => {
+              return (
+                <Marker
+                  position={row.location}
+                  key={index}
+                />
+              )
+            })
+          })
+        }
+        <Marker
+          position={[123.46221,41.803282]}
+          title={'u'}
+        />
+        <Marker
+          position={[123.419464,41.803337]}
+        />
       </Map>
     </div>
   )
